@@ -40,6 +40,7 @@ class OpenAIClient:
         self.openai_kwargs = {'model': self.model}
 
 
+        global system_prompt
         system_prompt = system_prompt + "\n" + self.custom_prompt
 
 
