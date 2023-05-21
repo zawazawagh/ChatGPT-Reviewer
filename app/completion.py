@@ -60,7 +60,7 @@ class OpenAIClient:
     def get_completion_chat(self, prompt) -> str:
         '''Invoke OpenAI API to get chat completion'''
         messages = [
-            {"role": "system", "content": system_prompt + "\n" + self.custom_prompt},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt},
         ]
         response = openai.ChatCompletion.create(
