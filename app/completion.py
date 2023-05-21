@@ -28,7 +28,7 @@ manner, using language that is easy to understand and follow.
 class OpenAIClient:
     '''OpenAI API client'''
 
-    def __init__(self, model, temperature, frequency_penalty, presence_penalty,
+    def __init__(self, model, temperature, frequency_penalty, presence_penalty, custom_prompt,
                  max_tokens=4000, min_tokens=256):
         self.model = model
         self.temperature = temperature
@@ -38,6 +38,11 @@ class OpenAIClient:
         self.max_tokens = max_tokens
         self.min_tokens = min_tokens
         self.openai_kwargs = {'model': self.model}
+
+
+        system_prompt = system_prompt + "\n" + self.custom_prompt
+
+
         if openai.api_type == "azure":
             self.openai_kwargs = {'engine': self.model}
 
@@ -55,7 +60,7 @@ class OpenAIClient:
     def get_completion_chat(self, prompt) -> str:
         '''Invoke OpenAI API to get chat completion'''
         messages = [
-            {"role": "system", "content": system_prompt},
+            {"role": "system", "content": system_prompt + "\n" + self.custom_prompt},
             {"role": "user", "content": prompt},
         ]
         response = openai.ChatCompletion.create(

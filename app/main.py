@@ -41,6 +41,9 @@ parser.add_argument("--comment-per-file",
 parser.add_argument("--blocking",
                     help="Blocking the pull requests on OpenAI failures",
                     type=distutils.util.strtobool, default=False)
+parser.add_argument("--custom-prompt",
+                    help="Custom prompt for chatgpt to review",
+                    type=str, default="")
 args = parser.parse_args()
 
 
@@ -49,7 +52,8 @@ openai_client = completion.OpenAIClient(
     model=args.model,
     temperature=args.temperature,
     frequency_penalty=args.frequency_penalty,
-    presence_penalty=args.presence_penalty)
+    presence_penalty=args.presence_penalty,
+    custom_prompt=args.custom_prompt)
 github_client = githubs.GithubClient(
     openai_client=openai_client,
     review_per_file=args.review_per_file,
