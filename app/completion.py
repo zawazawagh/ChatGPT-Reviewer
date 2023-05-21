@@ -41,7 +41,7 @@ class OpenAIClient:
 
 
         global system_prompt
-        system_prompt = system_prompt + "\n" + self.custom_prompt
+        system_prompt = system_prompt + "\n" + custom_prompt
 
 
         if openai.api_type == "azure":
