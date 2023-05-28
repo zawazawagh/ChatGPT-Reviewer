@@ -22,6 +22,7 @@ improve the quality of the codebase while also remaining concise and clear in yo
 explanations. Please note that unnecessary explanations or summaries should be avoided
 as they may delay the review process. Your feedback should be provided in a timely
 manner, using language that is easy to understand and follow.
+Also, if you find potential bugs or problems in the code, please point them out.
 '''
 
 
